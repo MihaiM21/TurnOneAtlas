@@ -25,7 +25,7 @@ async def upload_telemetry(file: UploadFile = File(...)):
     - Number of samples
     - Available channels (column names)
     """
-    if not file.filename.endswith('.csv'):
+    if not file.filename or not file.filename.endswith('.csv'):
         raise HTTPException(
             status_code=400,
             detail="Only CSV files are supported"
